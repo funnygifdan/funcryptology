@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Funcryptology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- CSS and Scripts -->
+<link rel="stylesheet" href="index.css"> 
+<script defer src="index1.js"></script>
+<script defer src="swipemenu.js"></script>
+</head>
+
+<body>
+
+<!-- Light Animation Overlay -->
+<div class="light-streak"></div>
+<div class="light-streak delay"></div>
+
+<header>
+  <h1 class="glow-style">Funcryptology</h1>
+</header>
+
+<main class="content" id="dynamicContent">
+  <h1>Welcome</h1>
+  <p>Use the menu to navigate. Scroll and interact, more updates coming!</p>
+  <p style="margin-top: 2000px">Bottom reached!</p>
+</main>
+
+<footer>
+  <h1 class="footerTitle">Funcryptology</h1>
+  <div class="footer-left">
+    <div id="menuToggle">☰</div>
+  </div>
+
+  <nav id="menuOverlay">
+    <h1>Menu</h1>
+    <button id="closeMenu" class="closeMenu">&times;</button>
+
+    <div class="menu-sections">
+      <div class="menu-content">
+        <div class="menu-heading">MENU</div>
+
+        <div class="swipe-wrapper" id="swipeArea">
+          <div class="swipe-container" id="swipeContainer">
+
+            <div class="swipe-page">
+              <div class="menu-section">
+                <h3>Featured Sites</h3><br/>
+                <button class="menu-button" onclick="window.location.href='https://funcryptology.netlify.app'">Funcryptology</button>
+                <button class="menu-button" onclick="window.location.href='https://saranova.netlify.app'">Saranova AI</button>
+                <button class="menu-button" data-link="saranova">Saranova</button>
+                <button class="menu-button" data-link="atriadamus">Atriadamus</button>
+                <button class="menu-button" data-link="saranova">Saranova</button>
+              </div>
+            </div>
+
+            <div class="swipe-page">
+              <div class="menu-section">
+                <h3>Learning Content</h3>
+                <button class="menu-button" data-link="webtool">Go to Webtool</button>
+              </div>
+            </div>
+
+            <div class="swipe-page">
+              <div class="menu-section">
+                <h3>Coming Soon</h3>
+                <button class="menu-button" disabled>Not Ready Yet</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</footer>
+
+</body>
+</html>

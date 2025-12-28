@@ -1,0 +1,29 @@
+
+
+.glow-style::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 130%;
+  background: radial-gradient(ellipse at center, #00ff00 0%, transparent 100%);
+  background-size: 200% 100%;
+  animation: moveGlow 6s ease-in-out infinite;
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(8px);
+  max-width: 120%;
+}
+
+.glow-style {
+  color: #000;
+  font-family: monospace;
+  text-align: center;
+  padding: 1rem 2rem;
+  position: relative;
+  z-index: 1001;
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Funcryptology Menu</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: monospace;
+      background-color: #000;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      z-index: 100;
+      box-shadow: 0 -2px 10px #00ffcc55;
+    }
+
+    .footerTitle {
+      font-size: 1.4rem;
+      color: #00ffcc;
+      text-shadow: 0 0 10px #00ffee;
+    }
+
+    #menuToggle {
+      font-size: 2rem;
+      cursor: pointer;
+      color: #00ffcc;
+      transition: transform 0.3s ease;
+    }
+
+    #menuToggle:hover {
+      transform: scale(1.2);
+    }
+
+    #menuOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      color: white;
+      display: none;
+      flex-direction: column;
+      padding: 20px;
+      z-index: 999;
+    }
+
+    #menuOverlay h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #00ffcc;
+    }
+
+    .closeMenu {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: #ff4444;
+      cursor: pointer;
+    }
+
+    .menu-sections {
+      flex: 1;
+    }
+
+    .menu-content {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .menu-heading {
+      font-size: 1.5rem;
+      color: #00ffcc;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .swipe-wrapper {
+      overflow: hidden;
+    }
+
+    .swipe-container {
+      display: flex;
+      width: 300%;
+      transition: transform 0.4s ease-in-out;
+    }
+
+    .swipe-page {
+      flex: 0 0 100%;
+      padding: 10px;
+    }
+
+    .menu-section h3 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .site-btn {
+      display: block;
+      width: 90%;
+      max-width: 300px;
+      margin: 10px auto;
+      padding: 12px 20px;
+      font-size: 1.1em;
+      font-family: monospace;
+      color: white;
+      border: 2px solid #00ffcc;
+      background-color: black;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 10px #00ffcc55;
+    }
+
+    .site-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ffee, 0 0 25px #00ffee;
+    }
+
+    .site-btn.funcrypt { border-color: #00ffcc; }
+    .site-btn.saranova { border-color: #ff66cc; }
+    .site-btn.atriadamus { border-color: #ff4444; }
+    .site-btn.codinghuman { border-color: #66ff66; }
+    .site-btn.chapter2 { border-color: #ffcc00; }
+  </style>
+</head>
+<body>
+
+  <footer>
+    <h1 class="footerTitle">Funcryptology</h1>
+    <div id="menuToggle">☰</div>
+  </footer>
+
+  <nav id="menuOverlay">
+    <h1>Menu</h1>
+    <button id="closeMenu" class="closeMenu">&times;</button>
+    <div class="menu-sections">
+      <div class="menu-content">
+        <div class="menu-heading">MENU</div>
+        <div class="swipe-wrapper" id="swipeArea">
+          <div class="swipe-container" id="swipeContainer">
+
+            <div class="swipe-page">
+              <div class="menu-section">
+                <h3>Featured Sites</h3><br/>
+                <button class="site-btn funcrypt" onclick="window.location.href='https://funcryptology.netlify.app'">Funcryptology</button>
+                <button class="site-btn saranova" onclick="window.location.href='https://saranova.netlify.app'">Saranova AI</button>
+                <button class="site-btn atriadamus" onclick="window.location.href='https://atriadamus.netlify.app'">Atriadamus</button>
+                <button class="site-btn codinghuman" onclick="window.location.href='https://codingahuman.netlify.app'">Coding a Human</button>
+                <button class="site-btn chapter2" onclick="window.location.href='https://chapter2walkusa.netlify.app'">Chapter 2 USA</button>
+              </div>
+            </div>
+
+            <div class="swipe-page">
+              <div class="menu-section">
+                <h3>Learning Content</h3>
+                <button class="site-btn" onclick="window.location.href='https://funcryptology.netlify.app/webtool'">Go to Webtool</button>
+              </div>
+            </div>
+
+            <div class="swipe-page">
+              <div class="menu-section">
+                <h3>Coming Soon</h3>
+                <button class="site-btn" disabled>Not Ready Yet</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const closeMenu = document.getElementById('closeMenu');
+
+    menuToggle.addEventListener('click', () => {
+      menuOverlay.style.display = 'flex';
+    });
+
+    closeMenu.addEventListener('click', () => {
+      menuOverlay.style.display = 'none';
+    });
+
+    // Swipe logic
+    let currentPage = 0;
+    let startX = 0;
+    let isSwiping = false;
+    const totalPages = 3;
+    const swipeArea = document.getElementById('swipeArea');
+    const container = document.getElementById('swipeContainer');
+
+    swipeArea.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+      isSwiping = true;
+    });
+
+    swipeArea.addEventListener('touchend', () => {
+      isSwiping = false;
+    });
+
+    swipeArea.addEventListener('touchmove', e => {
+      if (!isSwiping) return;
+      const dx = e.touches[0].clientX - startX;
+      if (Math.abs(dx) > 50) {
+        isSwiping = false;
+        if (dx < 0 && currentPage < totalPages - 1) {
+          currentPage++;
+        } else if (dx > 0 && currentPage > 0) {
+          currentPage--;
+        }
+        container.style.transform = `translateX(-${currentPage * 100}%)`;
+      }
+    });
+  </script>
+
+</body>
+</html>
