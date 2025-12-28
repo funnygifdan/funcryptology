@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+<title>connections</title>
+<link href="./styles.css" rel="stylesheet"/>
+<link href="./marquee.css" rel="stylesheet"/>
+<link href="./loginregsubs/auth-dynamic.css" rel="stylesheet"/>
+<link href="./loginregsubs/alertloginout.css" rel="stylesheet"/>
+<link href="./loginregsubs/loader.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="ticker">
+    <div class="tape">
+      <div class="rail">
+        <div class="s-card">
+          <img alt="" src="logo1.jpg" style="width:100%;max-width:220px;border-radius:8px;display:block;margin:0 auto 6px;"/>
+        </div>
+        <div class="s-card">
+          <span class="tag"></span>
+          <img alt="" src="logo2.jpg" style="width:100%;max-width:220px;border-radius:8px;display:block;margin:0 auto 6px;"/>
+        </div>
+        <div class="s-card">
+          <span class="tag"></span>
+          <img alt="" src="logo1.jpg" style="width:100%;max-width:220px;border-radius:8px;display:block;margin:0 auto 6px;"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== ABOUT ===== -->
+<h1 class="section-heading">About Me</h1>
+<section class="panel">
+  <p>Hello everyone! 👋 Welcome to my main project hub connecting with all projects so it’s less confusing! 😜
+  <br/><br/>Hi again, my name is<br/><strong>Danny</strong> The mind 🧠 (and the chaos 🤪 ) behind these creations.
+  <br/><br/>From coding experiments 👨‍💻, AI development 🤖, books 📖, tools 🛠️, this is a bigger journey: blending storytelling, technology, and real life.👩‍🍼
+  <br/><br/>Explore  🗺️  freely and dive deep 🤿 if something sparks ⚡️ your interest! Let’s keep building brains 🧠 and stories together!</p>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<h1 class="section-heading">Projects</h1>
+<section class="panel">
+  <ul class="projects-list">
+    <li>Funcryptology — Learning</li>
+    <li>Atriadamus — Security Firm</li>
+    <li>Saranova — AI Research</li>
+    <li>The Cabin</li>
+  </ul>
+</section>
+
+<!-- ===== DONATIONS ===== -->
+<h1 class="section-heading">Donations 💚</h1>
+<section class="panel">
+  <p class="panel-note">I’m staying focused, building, and working hard.<br/>Never give up hope. 🙏
+  </p>
+  <div class="link-list">
+    <a class="project-link" href="https://www.paypal.com/pool/9deMMOPEir?sr=ancr" rel="noopener" target="_blank">PayPal
+    </a>
+  </div>
+</section>
+
+<!-- ===== FOOTER (menu button lives here) ===== -->
+<footer>
+  <button class="footer-menu-btn plusminus" id="footer-menu-btn"
+          aria-expanded="false" aria-controls="overlay-panel" aria-label="Open menu">
+    <span class="visually-hidden">Menu</span>
+  </button>
+  Mobile-optimized • Built by Dan &amp; ChatGPT
+</footer>
+
+<!--MAIN MENU OVERLAY-->
+<div id="overlay-backdrop" hidden>
+</div>
+<div id="overlay-panel" hidden role="dialog" aria-modal="true" aria-labelledby="menu-title">
+  <div class="overlay-inner" tabindex="-1">
+  <h1 id="menu-title" class="overlay-title">Menu
+  </h1>
+  <!--Main Site Section-->
+  <h3 class="overlay-section">Main Sites
+   </h3>
+    <ul class="overlay-list" id="menu-main-sites">
+      <li><a href="https://funcryptology.netlify.app">Funcryptology</a>
+      </li>
+      <li><a href="https://atriadamus.netlify.app">Atriadamus</a>
+      </li>
+      <li><a href="https://saranova.netlify.app">Saranova</a>
+      </li>
+      <li><a href="https://cabin.netlify.app">The Cabin</a>
+      </li>
+    </ul>
+  <!--Mini Project Section
+  <h3 class="overlay-section">Mini Projects</h3>
+    <ul class="overlay-list" id="menu-mini-projects">
+     <li><a href="https://codinghumans.netlify.app">Coding Humans</a>
+     </li>
+     <li><a href="https://cellgrowth.netlify.app">Cell Growth</a>
+     </li>
+     <li><a href="https://runnerapps.netlify.app">Ghost Runner</a>
+     </li>
+    </ul>
+    <h3 class="overlay-section">Books</h3>
+    <ul class="overlay-list" id="menu-books">
+      <li><a href="https://akidsbook.netlify.app">Kids Book</a></li>
+      <li><a href="https://adultbook.netlify.app">Adult Book</a></li>
+    </ul>-->
+<!--Account Menu-->
+  <h4 class="overlay-section">Account</h4>
+   <ul class="overlay-list" id="menu-account">
+   <li><a data-dyn="true" href="login.html">Login</a>
+   </li>
+   <li><a data-dyn="true" href="registration.html">Registration</a>
+   </li>
+   <li><a data-dyn="true" href="subscribe.html">Subscribe</a>
+   </li>
+   </ul>
+   <div class="account-dynamic" id="account-dynamic">
+   <h4 class="overlay-section">Account Panel</h4>
+  <div id="account-container">
+  </div>
+  <div class="overlay-note">Select Login / Registration / Subscribe to load the panel here.
+  </div>
+  </div>
+  <button class="overlay-close" id="overlay-close" aria-label="Close menu">Close
+  </button>
+  </div>
+  </div>
+
+<!-- ===== AUTH PANEL ROOT (for auth-panel.loader.js) ===== -->
+<div id="auth-panel-root"></div>
+
+<!-- ===== SCRIPTS ===== -->
+<script src="./marquee.js"></script>
+<script src="./loginregsubs/auth-dynamic.js"></script>
+<script src="./loginregsubs/loader.js"></script>
+<script src="./loginregsubs/expand.js"></script>
+
+<!-- replaces old single-purpose opener with full open/close/aria logic -->
+<script src="./menu.js"></script>
+</body>
+</html>

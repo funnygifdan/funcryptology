@@ -1,0 +1,136 @@
+/* ===== ROOT VARS ===== */
+:root {
+  --headerH: 150px;
+  --gap: 24px;
+  --fadeW: 72px;
+  --pxPerSec: 52; /* lower = slower; try 45–65 */
+}
+
+/* ===== HEADER WRAP ===== */
+.header {
+  background: #000000;
+}
+
+/* ===== TICKER WRAP ===== */
+.ticker {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #000000;
+  background-image: radial-gradient(
+    ellipse at center,
+    rgba(0, 255, 0, 0.15) 0%,
+    rgba(0, 255, 0, 0.08) 35%,
+    rgba(0, 255, 0, 0.03) 55%,
+    rgba(0, 0, 0, 1) 70%
+  );
+}
+
+/* ===== EDGE FADES ===== */
+.ticker::before,
+.ticker::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: var(--fadeW);
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.ticker::before {
+  left: 0;
+  background: linear-gradient(to right, #000000 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.ticker::after {
+  right: 0;
+  background: linear-gradient(to left, #000000 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* ===== INNER STRIP AREA ===== */
+.tape {
+  position: relative;
+  height: var(--headerH);
+  overflow: hidden;
+}
+
+/* ===== MOVING STRIPS (two tracks; no DOM reshuffle) ===== */
+.rail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  height: var(--headerH);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+/* use margins (not gap) so width math matches exactly */
+.rail > * {
+  flex: 0 0 auto;
+  margin-right: var(--gap);
+}
+
+.rail > *:last-child {
+  margin-right: 0;
+}
+
+/* cloned belt just mirrors content; JS positions it to the right */
+.rail--clone {
+  pointer-events: none;
+}
+
+/* ===== ITEM STYLES ===== */
+.s-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  max-width: 260px;
+  padding: 0;
+  background: transparent;
+  color: #cfead1;
+  border-radius: 12px;
+  box-shadow: none;
+  text-shadow: 0 0 6px rgba(0, 255, 0, 0.5);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.95rem;
+}
+
+.rail img,
+.rail svg {
+  height: var(--headerH);
+  width: auto;
+  object-fit: contain;
+  display: block;
+  background: #000000;
+  border: 0;
+  box-shadow: none;
+}
+
+/* hide bogus sources */
+.ticker img[src=""],
+.ticker img:not([src]),
+.ticker img[src="#"],
+.ticker img[src="about:blank"] {
+  display: none;
+}
+
+/* ===== PAGE FILLER (optional) ===== */
+.page {
+  min-height: 40vh;
+  background: #000000;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 560px) {
+  :root {
+    --headerH: 72px;
+    --gap: 16px;
+    --fadeW: 48px;
+    --pxPerSec: 48;
+  }
+}
